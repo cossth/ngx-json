@@ -123,6 +123,38 @@
           }
         }
       }
+    },
+    "ng-dynamic": {
+      "projectType": "library",
+      "root": "libs/ng-dynamic",
+      "sourceRoot": "libs/ng-dynamic/src",
+      "prefix": "ng-dynamic-form",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/ng-dynamic/tsconfig.lib.json",
+            "project": "libs/ng-dynamic/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ng-dynamic/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/ng-dynamic/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/ng-dynamic/**/*"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
