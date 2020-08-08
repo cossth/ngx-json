@@ -1,0 +1,8 @@
+<form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="form-horizontal">
+    <div *ngFor="let field of formfields">
+        This is a {{field.name}} field with value {{field.value}}
+    </div>
+    <div class="row">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">{{submitText}}</button>
+    </div>
+</form>

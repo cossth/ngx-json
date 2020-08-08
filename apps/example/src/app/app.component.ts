@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'example';
+  fields = [
+    { name: 'Username', value: 'Shubham' },
+    { name: 'Password', value: 'cossth' },
+  ];
 }
