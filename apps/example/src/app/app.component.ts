@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Fields } from '@cossth/ng-dynamic';
 
 @Component({
   selector: 'ng-dynamic-form-root',
@@ -6,8 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  fields = [
-    { name: 'Username', value: 'Shubham' },
-    { name: 'Password', value: 'cossth' },
+  fields : Fields= [
+    { name: 'Username', value: 'Shubham',type: 'text' },
+    { name: 'Password', value: 'cossth' ,type: 'text'},
   ];
 }
