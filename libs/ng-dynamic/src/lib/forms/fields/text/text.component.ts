@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 export interface TextInputParams {
   value: string;
   name: string;
-  type: 'text';
+  type: 'text' | 'password' ;
 }
 
 @Component({

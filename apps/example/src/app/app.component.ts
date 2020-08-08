@@ -9,6 +9,6 @@ import { Fields } from '@cossth/ng-dynamic';
 export class AppComponent {
   fields : Fields= [
     { name: 'Username', value: 'Shubham',type: 'text' },
-    { name: 'Password', value: 'cossth' ,type: 'text'},
+    { name: 'Password', value: 'cossth' ,type: 'password'},
   ];
 }
