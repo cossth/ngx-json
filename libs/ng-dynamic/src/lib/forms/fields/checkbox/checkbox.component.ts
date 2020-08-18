@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { InputParams } from '../../form/form.component';
+import { BaseFieldComponent } from '../base-field.component';
 
+export type CheckboxInputParam = InputParams & {
+  type: 'checkbox';
+  value?: boolean;
+};
 @Component({
   selector: 'ng-dynamic-form-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
 })
-export class CheckboxComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class CheckboxComponent extends BaseFieldComponent<CheckboxInputParam> {}

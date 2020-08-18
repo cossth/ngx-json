@@ -1,16 +1,21 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TextInputParams } from '../fields/text/text.component';
-
+import { SelectInputParams } from '../fields/select/select.component';
+import { CheckboxInputParam } from '../fields/checkbox/checkbox.component';
+import { RadioInputParam } from '../fields/radio/radio.component';
+export interface InputParams {
+  label: string;
+  name: string;
+  value?: number | string | boolean | Blob;
+  required?: boolean;
+}
 export type Field =
   | TextInputParams
-  | { value: string; name: string; type: 'text' | 'checkbox' }
-  | {
-      value: string;
-      name: string;
-      type: 'select';
-      options: [{ name: string; value: string }];
-    };
+  | SelectInputParams
+  | CheckboxInputParam
+  | RadioInputParam;
+
 export type Fields = Field[];
 @Component({
   selector: 'ng-dynamic-form',
@@ -27,12 +32,29 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     const formControls = {};
-    this.formfields.forEach((field) => {
-      formControls[field.name] = new FormControl(
-        field.value || '',
-        Validators.required
-      );
+    this.formfields.forEach((__field) => {
+      if (!__field.type) {
+        // const options = {};
+        // for (const option of field.options) {
+        //   options[option.value] = new FormControl(option.value);
+        // }
+        // formControls[field.name] = new FormGroup(options);
+      } else {
+        formControls[__field.name] = new FormControl(
+          __field.value || '',
+          this.getValidators(__field)
+        );
+      }
     });
     this.form = new FormGroup(formControls);
+  }
+  getValidators(field: Field) {
+    const validators = [];
+
+    if (field.required) {
+      validators.push(Validators.required);
+    }
+
+    return validators;
   }
 }

@@ -1,12 +1,16 @@
 <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="form-horizontal">
     <div *ngFor="let field of formfields">
         <div class="form-group row" [formGroup]="form">
-            <label class="col-12 form-control-label" [attr.for]="field.name">
-              {{field.name}}
+            <label *ngIf="field.type !== 'checkbox'" class="col-12 form-control-label" [attr.for]="field.name">
+              {{field.label}}
             </label>
             <div class="col-md-9" [ngSwitch]="field.type">
               <ng-dynamic-form-text *ngSwitchCase="'text'" [field]="field" [form]="form"></ng-dynamic-form-text>
+              <ng-dynamic-form-text *ngSwitchCase="'email'" [field]="field" [form]="form"></ng-dynamic-form-text>
               <ng-dynamic-form-text *ngSwitchCase="'password'" [field]="field" [form]="form"></ng-dynamic-form-text>
+              <ng-dynamic-form-select *ngSwitchCase="'select'" [field]="field" [form]="form"></ng-dynamic-form-select>
+              <ng-dynamic-form-checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></ng-dynamic-form-checkbox>
+              <ng-dynamic-form-radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></ng-dynamic-form-radio>
             </div>
           </div>
     </div>
@@ -14,3 +18,4 @@
         <button type="submit" [disabled]="!form.valid" class="btn btn-primary">{{submitText}}</button>
     </div>
 </form>
+<p>{{form.getRawValue() | json}}</p>

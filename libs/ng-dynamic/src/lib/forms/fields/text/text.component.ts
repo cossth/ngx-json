@@ -1,24 +1,25 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { InputParams } from '../../form/form.component';
+import { BaseFieldComponent } from '../base-field.component';
 
-export interface TextInputParams {
-  value: string;
-  name: string;
-  type: 'text' | 'password' ;
-}
+export type TextInputParams =
+  | (InputParams & {
+      type: 'password' | 'email' | 'text';
+      multiline?: boolean;
+    })
+  | (InputParams & { type: 'textarea'; lines: number });
 
 @Component({
   selector: 'ng-dynamic-form-text',
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss'],
 })
-export class TextComponent {
-  @Input() field: TextInputParams;
-  @Input() form: FormGroup;
-  get isValid() {
-    return this.form.controls[this.field.name].valid;
-  }
-  get isDirty() {
-    return this.form.controls[this.field.name].dirty;
+export class TextComponent extends BaseFieldComponent<TextInputParams> {
+  get isTextArea() {
+    return (
+      (this.field.type === 'text' && this.field.multiline) ||
+      this.field.type === 'textarea'
+    );
   }
 }

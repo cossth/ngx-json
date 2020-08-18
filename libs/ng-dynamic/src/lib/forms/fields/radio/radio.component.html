@@ -1,0 +1,8 @@
+<div [formGroup]="form">
+  <div class="form-check" *ngFor="let opt of field.options">
+    <label class="form-check-label">
+      <input type="radio" [formControlName]="field.name" [value]="opt.value" class="form-check-input">
+      <span class="custom-control-description">{{opt.label}}</span>
+    </label>
+  </div>
+</div>
