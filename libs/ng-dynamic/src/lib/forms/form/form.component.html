@@ -1,6 +1,6 @@
 <div *ngIf="!initialised; else formRef">Loading</div>
 <ng-template #formRef>
-  <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="form-horizontal">
+  <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="py-5">
     <div *ngFor="let field of formfields">
       <div class="form-group row" [formGroup]="form">
         <label *ngIf="field.type !== 'checkbox'" class="col-12 form-control-label" [attr.for]="field.name"
@@ -23,5 +23,3 @@
     </div>
   </form>
 </ng-template>
-
-<p>{{form.getRawValue() | json}}</p>

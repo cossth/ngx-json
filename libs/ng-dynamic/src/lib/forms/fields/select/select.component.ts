@@ -12,7 +12,6 @@ export type SelectInputParams = InputParams & {
 @Component({
   selector: 'ng-dynamic-form-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
 })
 export class SelectComponent extends BaseFieldComponent<SelectInputParams> {
 }

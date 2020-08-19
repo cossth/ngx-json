@@ -10,6 +10,5 @@ export type RadioInputParam = InputParams & {
 @Component({
   selector: 'ng-dynamic-form-radio',
   templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.scss'],
 })
 export class RadioComponent extends BaseFieldComponent<RadioInputParam> {}

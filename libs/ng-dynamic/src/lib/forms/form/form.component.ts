@@ -32,15 +32,14 @@ export type Fields = Field[];
 @Component({
   selector: 'ng-dynamic-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent implements OnInit, OnChanges {
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onSubmit = new EventEmitter();
   @Input() formfields: Fields = [];
+  @Input() submitText = 'Save';
   initialised: boolean;
-  submitText = 'Save';
   form: FormGroup;
   constructor() {}
 

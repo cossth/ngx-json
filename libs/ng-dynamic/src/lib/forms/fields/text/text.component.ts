@@ -13,7 +13,6 @@ export type TextInputParams =
 @Component({
   selector: 'ng-dynamic-form-text',
   templateUrl: './text.component.html',
-  styleUrls: ['./text.component.scss'],
 })
 export class TextComponent extends BaseFieldComponent<TextInputParams> {
   get isTextArea() {

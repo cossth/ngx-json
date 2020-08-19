@@ -9,6 +9,5 @@ export type CheckboxInputParam = InputParams & {
 @Component({
   selector: 'ng-dynamic-form-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss'],
 })
 export class CheckboxComponent extends BaseFieldComponent<CheckboxInputParam> {}
