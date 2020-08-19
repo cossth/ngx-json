@@ -28,10 +28,6 @@
     "example": {
       "tags": []
     },
-    "example-e2e": {
-      "tags": [],
-      "implicitDependencies": ["example"]
-    },
     "ng-dynamic": {
       "tags": []
     }
