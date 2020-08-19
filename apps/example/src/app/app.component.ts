@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Fields, Field } from '@cossth/ng-dynamic';
 import { HttpClient } from '@angular/common/http';
+import { interval, merge, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ng-dynamic-form-root',
@@ -30,20 +32,13 @@ export class AppComponent implements OnInit {
       name: 'age',
       required: true,
     },
-    {
-      label: 'Username',
-      value: 'Shubham',
-      type: 'text',
-      name: 'username',
-      required: true,
-    },
     { label: 'Password', value: 'cossth', type: 'password', name: 'password' },
     { label: 'Require', value: false, type: 'checkbox', name: 'check' },
     {
       label: 'Radio',
       type: 'radio',
       name: 'radio',
-      value:2,
+      value: 2,
       options: [
         { label: 'One', value: 1 },
         { label: 'Two', value: 2 },
@@ -62,11 +57,16 @@ export class AppComponent implements OnInit {
     },
   ];
   fields2: Fields = [];
-  constructor(private http: HttpClient){
-  }
+  constructor(private http: HttpClient) {}
   submit = console.log;
   ngOnInit(): void {
-    this.http.get<{properties :  Fields}[]>('https://localhost:5001/meta')
-    .subscribe(a => (this.fields2 = a[0].properties));
+    merge(
+      of(true)
+      // , interval(1000)
+    )
+      .pipe(
+        switchMap((a) => this.http.get<Fields>('https://localhost:5001/meta'))
+      )
+      .subscribe((a) => (this.fields2 = a));
   }
 }

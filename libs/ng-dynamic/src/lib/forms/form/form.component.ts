@@ -1,4 +1,13 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TextInputParams } from '../fields/text/text.component';
 import { SelectInputParams } from '../fields/select/select.component';
@@ -9,6 +18,9 @@ export interface InputParams {
   name: string;
   value?: number | string | boolean | Blob;
   required?: boolean;
+  description?: string;
+  regularExpression?: string;
+  readonly?:boolean;
 }
 export type Field =
   | TextInputParams
@@ -21,38 +33,47 @@ export type Fields = Field[];
   selector: 'ng-dynamic-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnChanges {
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onSubmit = new EventEmitter();
   @Input() formfields: Fields = [];
+  initialised: boolean;
   submitText = 'Save';
   form: FormGroup;
   constructor() {}
 
   ngOnInit() {
+    this.__updateForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.__updateForm();
+  }
+  __updateForm() {
     const formControls = {};
     this.formfields.forEach((__field) => {
-      if (!__field.type) {
-        // const options = {};
-        // for (const option of field.options) {
-        //   options[option.value] = new FormControl(option.value);
-        // }
-        // formControls[field.name] = new FormGroup(options);
-      } else {
-        formControls[__field.name] = new FormControl(
-          __field.value || '',
-          this.getValidators(__field)
-        );
-      }
+      formControls[__field.name] = new FormControl(
+        __field.value || '',
+        this.getValidators(__field)
+      );
     });
     this.form = new FormGroup(formControls);
+    this.initialised = true;
   }
   getValidators(field: Field) {
     const validators = [];
 
     if (field.required) {
       validators.push(Validators.required);
+    }
+    if (field.type === 'email') {
+      validators.push(Validators.email);
+    }
+
+    if (field.regularExpression) {
+      validators.push(Validators.pattern(field.regularExpression));
     }
 
     return validators;

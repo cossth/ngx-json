@@ -2,7 +2,7 @@
     <div class="form-check">
         <label class="form-check-label" [id]="field.name">
             <input [formControlName]="field.name" class="form-check-input" type="checkbox" value="option1"
-                [id]="field.name" />
+                [id]="field.name" [readonly]="field.readonly || false" />
             {{field.label}}</label>
     </div>
 </div>

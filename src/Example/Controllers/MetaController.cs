@@ -17,32 +17,10 @@ namespace Example.Controllers
     {
 
         [HttpGet]
-        public object Meta()
+        public ActionResult<IEnumerable<JsonProp>> Meta()
         {
-            var t = typeof(WeatherForecastController)
-            .GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public).Where(a => a.IsPublic && !a.IsDefined(typeof(NonActionAttribute)))
-            .Where(m => !m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true).Any())
-            .Select(x => new ApiHelpEndpoint
-            {
-                Endpoint = x.DeclaringType.Name.Replace("Controller", String.Empty),
-                Controller = x.DeclaringType.Name,
-                Action = x.Name,
-                DisplayableName = x.GetCustomAttributes<DisplayAttribute>().FirstOrDefault()?.Name ?? x.Name,
-                Description = x.GetCustomAttributes<DescriptionAttribute>().FirstOrDefault()?.Description ?? String.Empty,
-                Properties = x.ReturnType.GenericTypeArguments.FirstOrDefault()?.GetProperties().Select(a => a.ToTsProp()),
-            });
-            return Ok(t);
-        }
-
-        public class ApiHelpEndpoint
-        {
-            public string Endpoint { get; set; }
-            public string Controller { get; set; }
-            public string Action { get; set; }
-            public string DisplayableName { get; set; }
-            public string Description { get; set; }
-            public string EndpointRoute => $"/api/{Endpoint}";
-            public IEnumerable<JsonProp> Properties { get; set; }
+            var data = typeof(SampleForm).GetProperties().Select(a => a.ToTsProp());
+            return Ok(data);
         }
     }
 }

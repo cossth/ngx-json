@@ -10,22 +10,13 @@ namespace Rigel.Forms.Generators.Models
         public bool? Required { get; set; }
         public Option[] Options { get; set; }
         public bool? Multiselect { get; set; }
+        public bool? Readonly { get; set; }
+        public string RegularExpression { get; set; }
     }
 
     public partial class Option
     {
         public string Label { get; set; }
-        public long Value { get; set; }
+        public dynamic Value { get; set; }
     }
-
-    // public partial struct Value
-    // {
-    //     public bool? Bool;
-    //     public long? Integer;
-    //     public string String;
-
-    //     public static implicit operator Value(bool Bool) => new Value { Bool = Bool };
-    //     public static implicit operator Value(long Integer) => new Value { Integer = Integer };
-    //     public static implicit operator Value(string String) => new Value { String = String };
-    // }
 }
