@@ -9,26 +9,8 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { TextInputParams } from '../fields/text/text.component';
-import { SelectInputParams } from '../fields/select/select.component';
-import { CheckboxInputParam } from '../fields/checkbox/checkbox.component';
-import { RadioInputParam } from '../fields/radio/radio.component';
-export interface InputParams {
-  label: string;
-  name: string;
-  value?: number | string | boolean | Blob;
-  required?: boolean;
-  description?: string;
-  regularExpression?: string;
-  readonly?:boolean;
-}
-export type Field =
-  | TextInputParams
-  | SelectInputParams
-  | CheckboxInputParam
-  | RadioInputParam;
+import { Fields, Field } from '../../models';
 
-export type Fields = Field[];
 @Component({
   selector: 'ng-dynamic-form',
   templateUrl: './form.component.html',

@@ -1,14 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { InputParams } from '../../form/form.component';
+import { Component } from '@angular/core';
 import { BaseFieldComponent } from '../base-field.component';
-
-export type TextInputParams =
-  | (InputParams & {
-      type: 'password' | 'email' | 'text' | 'number';
-      multiline?: boolean;
-    })
-  | (InputParams & { type: 'textarea'; lines: number });
+import { TextInputParams } from '../../../models';
 
 @Component({
   selector: 'ng-dynamic-form-text',

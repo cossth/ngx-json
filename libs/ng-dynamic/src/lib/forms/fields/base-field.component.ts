@@ -1,6 +1,6 @@
 import { Input, Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { InputParams } from '../form/form.component';
+import { InputParams } from '../../models';
 
 @Component({
   template: ''
