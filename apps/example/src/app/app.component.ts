@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { Fields } from '@cossth/ng-dynamic';
+import { Component, OnInit } from '@angular/core';
+import { Fields, Field } from '@cossth/ng-dynamic';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'ng-dynamic-form-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   fields: Fields = [
     {
       label: 'Email',
@@ -20,6 +21,13 @@ export class AppComponent {
       value: 'Shubham',
       type: 'text',
       name: 'username',
+      required: true,
+    },
+    {
+      label: 'Age',
+      value: 18,
+      type: 'number',
+      name: 'age',
       required: true,
     },
     {
@@ -53,5 +61,12 @@ export class AppComponent {
       ],
     },
   ];
+  fields2: Fields = [];
+  constructor(private http: HttpClient){
+  }
   submit = console.log;
+  ngOnInit(): void {
+    this.http.get<{properties :  Fields}[]>('https://localhost:5001/meta')
+    .subscribe(a => (this.fields2 = a[0].properties));
+  }
 }

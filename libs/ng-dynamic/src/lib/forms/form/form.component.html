@@ -7,6 +7,7 @@
             <div class="col-md-9" [ngSwitch]="field.type">
               <ng-dynamic-form-text *ngSwitchCase="'text'" [field]="field" [form]="form"></ng-dynamic-form-text>
               <ng-dynamic-form-text *ngSwitchCase="'email'" [field]="field" [form]="form"></ng-dynamic-form-text>
+              <ng-dynamic-form-text *ngSwitchCase="'number'" [field]="field" [form]="form"></ng-dynamic-form-text>
               <ng-dynamic-form-text *ngSwitchCase="'password'" [field]="field" [form]="form"></ng-dynamic-form-text>
               <ng-dynamic-form-select *ngSwitchCase="'select'" [field]="field" [form]="form"></ng-dynamic-form-select>
               <ng-dynamic-form-checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></ng-dynamic-form-checkbox>

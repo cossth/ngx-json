@@ -5,7 +5,7 @@ import { BaseFieldComponent } from '../base-field.component';
 
 export type TextInputParams =
   | (InputParams & {
-      type: 'password' | 'email' | 'text';
+      type: 'password' | 'email' | 'text' | 'number';
       multiline?: boolean;
     })
   | (InputParams & { type: 'textarea'; lines: number });
