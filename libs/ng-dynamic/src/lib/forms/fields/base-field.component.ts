@@ -5,7 +5,7 @@ import { InputParams } from '../../models';
 @Component({
   template: ''
 })
-export class BaseFieldComponent<T extends InputParams>  {
+export abstract class BaseFieldComponent<T extends InputParams>  {
   @Input() field: T;
   @Input() form: FormGroup;
   get isValid() {

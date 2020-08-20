@@ -1,1 +1,16 @@
-<p>table works!</p>
+<table class="table w-100">
+    <thead>
+        <tr>
+            <th *ngFor="let t of formfields">
+                {{t.label}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of data">
+            <td *ngFor="let field of formfields">
+                {{d[field.name]}}
+            </td>
+        </tr>
+    </tbody>
+</table>

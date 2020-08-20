@@ -1,19 +1,18 @@
 <div *ngIf="!initialised; else formRef">Loading</div>
 <ng-template #formRef>
   <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="py-5">
-    <div *ngFor="let field of formfields">
-      <div class="form-group row" [formGroup]="form">
-        <label *ngIf="field.type !== 'checkbox'" class="col-12 form-control-label" [attr.for]="field.name"
-          [title]="field.description || field.label">
-          {{field.label}}
-          <span *ngIf="field.required" class="text-danger">*</span>
-        </label>
-        <div class="col-12" [ngSwitch]="field.type">
-          <ng-dynamic-form-select *ngSwitchCase="'select'" [field]="field" [form]="form"></ng-dynamic-form-select>
-          <ng-dynamic-form-checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></ng-dynamic-form-checkbox>
-          <ng-dynamic-form-radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></ng-dynamic-form-radio>
-          <ng-dynamic-form-text *ngSwitchDefault [field]="field" [form]="form"></ng-dynamic-form-text>
-        </div>
+    <div *ngFor="let field of formfields" class="form-group row" [formGroup]="form">
+      <label *ngIf="field.type !== 'checkbox'" class="col-12 form-control-label" [attr.for]="field.name"
+        [title]="field.description || field.label">
+        {{field.label}}
+        <span *ngIf="field.required" class="text-danger">*</span>
+      </label>
+      <div class="col-12" [ngSwitch]="field.type"  >
+      <!-- [ngClass]="{'was-validated' : form.controls[field.name]?.dirty && form.controls[field.name]?.valid }" -->
+        <ng-dynamic-form-select *ngSwitchCase="'select'" [field]="field" [form]="form"></ng-dynamic-form-select>
+        <ng-dynamic-form-checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></ng-dynamic-form-checkbox>
+        <ng-dynamic-form-radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></ng-dynamic-form-radio>
+        <ng-dynamic-form-text *ngSwitchDefault [field]="field" [form]="form"></ng-dynamic-form-text>
       </div>
     </div>
     <div class="row">

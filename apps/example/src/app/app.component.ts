@@ -9,7 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   fields2: Fields = [];
   constructor(private http: HttpClient) {}
-  submit = console.log;
+  data: any[] = [];
+  submit(a: any) {
+    this.data = [...this.data, a];
+  }
   ngOnInit(): void {
     this.http
       .get<Fields>('https://localhost:5001/meta')

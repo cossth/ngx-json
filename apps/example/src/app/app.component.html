@@ -1,10 +1,11 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-auto">
-            <ng-dynamic-form [formfields]="fields2" (onSubmit)="submit($event)" [submitText]="'Upload'"></ng-dynamic-form>
+        <div class="col">
+            <ng-dynamic-form [formfields]="fields2" (onSubmit)="submit($event)" [submitText]="'Upload'">
+            </ng-dynamic-form>
         </div>
-        <div class="col-auto">
-            <ng-dynamic-table></ng-dynamic-table>
+        <div class="col">
+            <ng-dynamic-table [formfields]="fields2" [data]="data"></ng-dynamic-table>
         </div>
     </div>
 </div>

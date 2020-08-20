@@ -16,19 +16,19 @@ namespace Example
         [Required]
         public string Email { get; set; }
 
-        [Required]
+        // [Required]
         [DefaultValue("382c74c3-721d-4f34-80e5-57657b6cbc27")]
         public Guid Identity { get; set; }
 
-        [Required]
+        // [Required]
         [Url]
         public Uri Profile { get; set; }
 
-        [Required]
+        // [Required]
         [DataType(DataType.MultilineText)]
         public string Address { get; set; }
 
-        [Required]
+        // [Required]
         [RegularExpression("^[a-zA-Z0-9]{2,5}")]
         [Description("This is your Username.")]
         public string Username { get; set; }
@@ -52,7 +52,7 @@ namespace Example
         [DisplayName("Agree to terms and conditions")]
         [Description("TOC")]
         [RegularExpression("([a-z])+")]
-        [Required]
+        // [Required]
         public bool AgreeToC { get; set; }
     }
 }
