@@ -1,7 +1,7 @@
 <div *ngIf="!initialised; else formRef">Loading</div>
 <ng-template #formRef>
-  <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="py-5">
-    <div *ngFor="let field of formfields" class="form-group row" [formGroup]="form">
+  <form ngDynamicForm (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="py-5">
+    <div *ngFor="let field of formfields" class="form-group row" >
       <label *ngIf="field.type !== 'checkbox'" class="col-12 form-control-label" [attr.for]="field.name"
         [title]="field.description || field.label">
         {{field.label}}
@@ -16,8 +16,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col-auto">
         <button type="submit" [disabled]="!form.valid" class="btn btn-primary">{{submitText}}</button>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-info">Validate</button>
       </div>
     </div>
   </form>

@@ -8,9 +8,23 @@ import { CheckboxComponent } from './forms/fields/checkbox/checkbox.component';
 import { RadioComponent } from './forms/fields/radio/radio.component';
 import { TableComponent } from './table/table/table.component';
 
+import { FormSubmitDirective } from './forms/directives/form-submit.directive';
+import { ControlErrorsDirective } from './forms/directives/control-errors.directive';
+import { ControlErrorComponent } from './forms/components/control-error/control-error.component';
+
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],
-  declarations: [FormComponent, SelectComponent, TextComponent, CheckboxComponent, RadioComponent, TableComponent],
+  declarations: [
+    FormComponent,
+    SelectComponent,
+    TextComponent,
+    CheckboxComponent,
+    RadioComponent,
+    TableComponent,
+    ControlErrorsDirective,
+    FormSubmitDirective,
+    ControlErrorComponent,
+  ],
   exports: [FormComponent, TableComponent],
   providers: [],
 })
