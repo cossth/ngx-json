@@ -1,7 +1,23 @@
 {
-  "name": "ng-dynamic-form",
-  "version": "0.0.0",
+  "name": "@cossth/ng-dynamic-form",
+  "description": "Dynamic Forms using Angular",
+  "version": "0.1.0",
   "license": "MIT",
+  "author": {
+    "email": "cossth@gmail.com",
+    "name": "Shubham Sharma",
+    "url": "https://github.com/cossth"
+  },
+  "repository": {
+    "url": "https://github.com/cossth/ng-dynamic-form.git",
+    "type": "git"
+  },
+  "keywords": [
+    "ng",
+    "angular",
+    "angular dynamic forms",
+    "dynamic forms"
+  ],
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
@@ -21,9 +37,18 @@
     "update": "ng update @nrwl/workspace",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "copy:readme": "cpr README.md dist/lib/ng-dynamic/README.md --overwrite",
+    "copy:license": "cpr LICENSE dist/lib/ng-dynamic/LICENSE --overwrite",
+    "copy:changelog": "cpr LICENSE dist/lib/ng-dynamic/Changelog.md --overwrite",
+    "copy-files": "npm run copy-readme && npm run copy-license && npm run copy-changelog",
+    "bump-version:major": "npm version major --force && cd libs/ng-dynamic && npm version major --force",
+    "bump-version:minor": "npm version minor --force && cd libs/ng-dynamic  && npm version minor --force",
+    "bump-version:patch": "npm version patch --force && cd libs/ng-dynamic && npm version patch --force",
+    "build:lib-pack": "nx format:write && ng build --project ng-dynamic --prod && npm run copy-files &&  cd dist/libs/ng-dynamic && npm pack",
+    "publish-library": ""
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^10.0.0",
     "@angular/common": "^10.0.0",
@@ -42,28 +67,29 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1000.0",
     "@angular-devkit/build-ng-packagr": "~0.1000.5",
     "@angular/cli": "~10.0.0",
-    "@nrwl/workspace": "10.0.10",
-    "@types/node": "~8.9.4",
-    "dotenv": "6.2.0",
-    "ng-packagr": "^10.0.0",
-    "ts-node": "~7.0.0",
-    "tslint": "~6.0.0",
-    "eslint": "6.8.0",
-    "typescript": "~3.9.3",
-    "prettier": "2.0.4",
-    "@nrwl/nx-cloud": "latest",
     "@angular/compiler-cli": "^10.0.0",
     "@angular/language-service": "^10.0.0",
-    "@angular-devkit/build-angular": "~0.1000.0",
-    "codelyzer": "~5.0.1",
-    "jest-preset-angular": "8.1.2",
+    "@nrwl/cypress": "10.0.10",
     "@nrwl/jest": "10.0.10",
-    "jest": "25.2.3",
+    "@nrwl/nx-cloud": "latest",
+    "@nrwl/workspace": "10.0.10",
     "@types/jest": "25.1.4",
-    "ts-jest": "25.2.1",
+    "@types/node": "~8.9.4",
+    "codelyzer": "~5.0.1",
+    "cpr": "^3.0.1",
     "cypress": "^4.1.0",
-    "@nrwl/cypress": "10.0.10"
+    "dotenv": "6.2.0",
+    "eslint": "6.8.0",
+    "jest": "25.2.3",
+    "jest-preset-angular": "8.1.2",
+    "ng-packagr": "^10.0.0",
+    "prettier": "2.0.4",
+    "ts-jest": "25.2.1",
+    "ts-node": "~7.0.0",
+    "tslint": "~6.0.0",
+    "typescript": "~3.9.3"
   }
 }

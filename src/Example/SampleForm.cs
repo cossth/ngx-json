@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -21,9 +21,10 @@ namespace Example
         [Required]
         public string Email { get; set; }
 
-        // [Required]
-        [Url]
-        public Uri Profile { get; set; }
+        [Required]
+        [MinLength(3)]
+        [MaxLength(32)]
+        public string Name { get; set; }
 
         // [Required]
         [RegularExpression("^[a-zA-Z0-9]{2,5}")]
@@ -31,6 +32,7 @@ namespace Example
         public string Username { get; set; }
 
         [DisplayName("Age in years")]
+        [Range(maximum: 99, minimum: 18)]
         public int Age { get; set; }
 
         // [Required]

@@ -1,9 +1,15 @@
 export interface InputParams {
-    label: string;
-    name: string;
-    value?: number | string | boolean | Blob;
+  label: string;
+  name: string;
+  value?: number | string | boolean | Blob;
+  description?: string;
+  readonly?: boolean;
+  validators: {
     required?: boolean;
-    description?: string;
     regularExpression?: string;
-    readonly?: boolean;
+    min?: number;
+    max?: number;
+    minLength?: number;
+    maxLength?: number;
+  };
 }

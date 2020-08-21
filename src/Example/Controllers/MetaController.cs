@@ -17,7 +17,7 @@ namespace Example.Controllers
     {
 
         [HttpGet]
-        public ActionResult<IEnumerable<JsonProp>> Meta()
+        public ActionResult<JsonProp> Meta()
         {
             var data = typeof(SampleForm).GetProperties().Select(a => a.ToTsProp());
             return Ok(data);

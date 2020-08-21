@@ -31,24 +31,30 @@ export class ControlErrorsDirective implements OnInit, OnDestroy {
     private vcr: ViewContainerRef,
     private control: NgControl,
     private cfr: ComponentFactoryResolver,
-    @Optional() @Host() private form: FormSubmitDirective,
+    @Optional() private form: FormSubmitDirective,
     @Inject(FORM_ERRORS) private errors
   ) {
     this.submit$ = this.form ? this.form.submit$ : EMPTY;
   }
-  
+
   ngOnInit() {
-    console.log(this.submit$, this.form, this.control.name)
-    merge(this.submit$, this.control.valueChanges)
-    .pipe(filter(_ => this.control.touched && this.control.dirty))
-    .subscribe(() => {
+    merge(
+      this.submit$,
+      this.control.valueChanges.pipe(
+        filter(
+          (_) =>
+            // this.control.touched &&
+            this.control.dirty
+        )
+      )
+    ).subscribe(() => {
       const controlErrors = this.control.errors;
       if (controlErrors) {
         const firstKey = Object.keys(controlErrors)[0];
-        const getError = this.errors[firstKey] || this.errors['invalid'] ;
+        const getError = this.errors[firstKey] || this.errors['invalid'];
         const text = getError(controlErrors[firstKey]);
         this.setError(text);
-        console.log(firstKey, text);
+        console.log(text);
       } else if (this.ref) {
         this.setError(null);
       }
@@ -64,7 +70,5 @@ export class ControlErrorsDirective implements OnInit, OnDestroy {
     this.ref.instance.text = text;
   }
 
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnDestroy(): void {}
 }

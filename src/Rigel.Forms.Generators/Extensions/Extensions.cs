@@ -60,23 +60,31 @@ namespace Rigel.Forms.Generators.Extensions
                 Name = info.Name.ToCamelCase(),
                 Label = info.GetCustomAttributes<DisplayNameAttribute>().FirstOrDefault()?.DisplayName ?? info.Name,
                 Value = info.GetCustomAttributes<DefaultValueAttribute>().FirstOrDefault()?.Value,
-                Required = info.GetCustomAttributes<RequiredAttribute>().FirstOrDefault() != null,
                 Description = info.GetCustomAttributes<DescriptionAttribute>().FirstOrDefault()?.Description,
-                RegularExpression = getRegex(info),
                 Type = getType(info),
                 Readonly = info.GetCustomAttributes<ReadOnlyAttribute>().FirstOrDefault()?.IsReadOnly,
             };
-            if (jsonProp.Type == "radio"|| jsonProp.Type == "select")
+            jsonProp.Validators = new Validators()
             {
-                jsonProp.Options = info.PropertyType.GetEnumNames().Select(a => new Option() { Label = a, Value = a }).ToArray();
+                RegularExpression = getRegex(info),
+                Required = info.GetCustomAttributes<RequiredAttribute>().FirstOrDefault() != null,
+                MinLength = info.GetCustomAttributes<MinLengthAttribute>().FirstOrDefault()?.Length,
+                MaxLength = info.GetCustomAttributes<MaxLengthAttribute>().FirstOrDefault()?.Length,
+                Min = info.GetCustomAttributes<RangeAttribute>().FirstOrDefault()?.Minimum,
+                Max = info.GetCustomAttributes<RangeAttribute>().FirstOrDefault()?.Maximum,
+            };
+
+            if (jsonProp.Type == "radio" || jsonProp.Type == "select")
+            {
+                jsonProp.Options = info.PropertyType.GetEnumNames().Select(a => new SelectOption() { Label = a, Value = a }).ToArray();
             }
             return jsonProp;
         }
 
         private static string getRegex(PropertyInfo info)
         {
-            if(info.PropertyType.Name == nameof(Guid))
-            return @"^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$";
+            if (info.PropertyType.Name == nameof(Guid))
+                return @"^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$";
             return info.GetCustomAttributes<RegularExpressionAttribute>().FirstOrDefault()?.Pattern;
         }
 

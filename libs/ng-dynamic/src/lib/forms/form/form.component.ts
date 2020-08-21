@@ -46,15 +46,29 @@ export class FormComponent implements OnInit, OnChanges {
   getValidators(field: Field) {
     const validators = [];
 
-    if (field.required) {
-      validators.push(Validators.required);
-    }
     if (field.type === 'email') {
       validators.push(Validators.email);
     }
 
-    if (field.regularExpression) {
-      validators.push(Validators.pattern(field.regularExpression));
+    if (field.validators.required) {
+      validators.push(Validators.required);
+    }
+
+    if (field.validators.regularExpression) {
+      validators.push(Validators.pattern(field.validators.regularExpression));
+    }
+    if (field.validators.min) {
+      validators.push(Validators.min(field.validators.min));
+    }
+    if (field.validators.max) {
+      validators.push(Validators.max(field.validators.max));
+    }
+
+    if (field.validators.minLength) {
+      validators.push(Validators.minLength(field.validators.minLength));
+    }
+    if (field.validators.maxLength) {
+      validators.push(Validators.maxLength(field.validators.maxLength));
     }
 
     return validators;

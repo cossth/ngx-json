@@ -25,7 +25,7 @@ import { ControlErrorComponent } from './forms/components/control-error/control-
     FormSubmitDirective,
     ControlErrorComponent,
   ],
-  exports: [FormComponent, TableComponent],
+  exports: [FormComponent],
   providers: [],
 })
 export class NgDynamicModule {}
