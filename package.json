@@ -1,7 +1,7 @@
 {
   "name": "ngx-json",
   "description": "Dynamic Forms using Angular",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "author": {
     "email": "cossth@gmail.com",
@@ -41,7 +41,7 @@
     "copy:readme": "cpr README.md dist/lib/ngx-json/README.md --overwrite",
     "copy:license": "cpr LICENSE dist/lib/ngx-json/LICENSE --overwrite",
     "copy:changelog": "cpr LICENSE dist/lib/ngx-json/Changelog.md --overwrite",
-    "copy-files": "npm run copy-readme && npm run copy-license && npm run copy-changelog",
+    "copy-files": "npm run copy:readme && npm run copy:license && npm run copy:changelog",
     "bump-version:major": "npm version major --force && cd libs/ngx-json && npm version major --force",
     "bump-version:minor": "npm version minor --force && cd libs/ngx-json  && npm version minor --force",
     "bump-version:patch": "npm version patch --force && cd libs/ngx-json && npm version patch --force",
