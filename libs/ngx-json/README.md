@@ -1,3 +1,3 @@
-# ng-dynamic
+# ngx-json
 
 This library was generated with [Nx](https://nx.dev).

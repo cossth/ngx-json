@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Fields } from '@cossth/ng-dynamic';
+import { Fields } from 'ngx-json';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'ng-dynamic-form-root',
+  selector: 'ngx-json-root',
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {

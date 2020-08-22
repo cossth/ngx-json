@@ -16,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@cossth/ng-dynamic": ["libs/ng-dynamic/src/index.ts"]
+      "ngx-json": ["libs/ngx-json/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

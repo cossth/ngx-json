@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-2">
-            <ng-dynamic-form [formfields]="fields2" (onSubmit)="submit($event)" [submitText]="'Upload'">
-            </ng-dynamic-form>
+            <ngx-json [formfields]="fields2" (onSubmit)="submit($event)" [submitText]="'Upload'">
+            </ngx-json>
         </div>
         <div class="col-10">
-            <ng-dynamic-table [formfields]="fields2" [data]="data"></ng-dynamic-table>
+            <ngx-json-table [formfields]="fields2" [data]="data"></ngx-json-table>
         </div>
     </div>
 </div>

@@ -18,26 +18,26 @@
       </label>
       <div class="col-12" [ngSwitch]="field.type">
         <!-- [ngClass]="{'was-validated' : form.controls[field.name]?.dirty && form.controls[field.name]?.valid }" -->
-        <ng-dynamic-form-select
+        <ngx-json-select
           *ngSwitchCase="'select'"
           [field]="field"
           [form]="form"
-        ></ng-dynamic-form-select>
-        <ng-dynamic-form-checkbox
+        ></ngx-json-select>
+        <ngx-json-checkbox
           *ngSwitchCase="'checkbox'"
           [field]="field"
           [form]="form"
-        ></ng-dynamic-form-checkbox>
-        <ng-dynamic-form-radio
+        ></ngx-json-checkbox>
+        <ngx-json-radio
           *ngSwitchCase="'radio'"
           [field]="field"
           [form]="form"
-        ></ng-dynamic-form-radio>
-        <ng-dynamic-form-text
+        ></ngx-json-radio>
+        <ngx-json-text
           *ngSwitchDefault
           [field]="field"
           [form]="form"
-        ></ng-dynamic-form-text>
+        ></ngx-json-text>
       </div>
     </div>
     <div class="row">

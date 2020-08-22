@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseFieldComponent } from '../base-field.component';
-import { CheckboxInputParam } from '../../../models';
+import { CheckboxInputParam } from '../../../models/models';
 
 @Component({
-  selector: 'ng-dynamic-form-checkbox',
+  selector: 'ngx-json-checkbox',
   templateUrl: './checkbox.component.html',
 })
 export class CheckboxComponent extends BaseFieldComponent<CheckboxInputParam> {}

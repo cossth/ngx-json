@@ -45,7 +45,7 @@
     "bump-version:major": "npm version major --force && cd libs/ngx-json && npm version major --force",
     "bump-version:minor": "npm version minor --force && cd libs/ngx-json  && npm version minor --force",
     "bump-version:patch": "npm version patch --force && cd libs/ngx-json && npm version patch --force",
-    "build:lib-pack": "bump-version:patch && nx format:write && ng build --project ngx-json --prod && npm run copy-files &&  cd dist/libs/ngx-json && npm pack && npm publish",
+    "build:lib-pack": "npm run bump-version:patch && nx format:write && ng build --project ngx-json --prod && npm run copy-files &&  cd dist/libs/ngx-json && npm pack && npm publish",
     "publish-library": ""
   },
   "private": false,

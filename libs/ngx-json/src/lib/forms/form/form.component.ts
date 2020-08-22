@@ -9,10 +9,10 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Fields, Field } from '../../models';
+import { Fields, Field } from '../../models/models';
 
 @Component({
-  selector: 'ng-dynamic-form',
+  selector: 'ngx-json',
   templateUrl: './form.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

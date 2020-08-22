@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Fields } from '../../models';
+import { Fields } from '../../models/models';
 
 @Component({
-  selector: 'ng-dynamic-table',
+  selector: 'ngx-json-table',
   templateUrl: './table.component.html',
 })
 export class TableComponent implements OnInit {

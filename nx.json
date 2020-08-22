@@ -1,5 +1,5 @@
 {
-  "npmScope": "ng-dynamic-form",
+  "npmScope": "ngx-json",
   "affected": {
     "defaultBase": "master"
   },
@@ -28,7 +28,7 @@
     "example": {
       "tags": []
     },
-    "ng-dynamic": {
+    "ngx-json": {
       "tags": []
     }
   }

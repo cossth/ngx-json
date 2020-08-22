@@ -10,7 +10,7 @@
       },
       "root": "apps/example",
       "sourceRoot": "apps/example/src",
-      "prefix": "ng-dynamic",
+      "prefix": "ngx-json",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -97,29 +97,29 @@
         }
       }
     },
-    "ng-dynamic": {
+    "ngx-json": {
       "projectType": "library",
-      "root": "libs/ng-dynamic",
-      "sourceRoot": "libs/ng-dynamic/src",
-      "prefix": "ng-dynamic",
+      "root": "libs/ngx-json",
+      "sourceRoot": "libs/ngx-json/src",
+      "prefix": "ngx-json",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
           "options": {
-            "tsConfig": "libs/ng-dynamic/tsconfig.lib.json",
-            "project": "libs/ng-dynamic/ng-package.json"
+            "tsConfig": "libs/ngx-json/tsconfig.lib.json",
+            "project": "libs/ngx-json/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/ng-dynamic/tsconfig.lib.prod.json"
+              "tsConfig": "libs/ngx-json/tsconfig.lib.prod.json"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/ng-dynamic/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/ng-dynamic/**/*"]
+            "tsConfig": ["libs/ngx-json/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/ngx-json/**/*"]
           }
         }
       },
